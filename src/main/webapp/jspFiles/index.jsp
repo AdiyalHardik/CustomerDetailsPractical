@@ -4,13 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Customer Details</title>
+<title>Practical | Customer Details</title>
 </head>
 <body>
 	<h2>Welcome to Customer Details Page</h2>
 	<br>
+	<br>
 	<a href="/customers/all">View All Customers</a>
 	<br>
-	<a href="/customers/add">Add New Customer</a>
+	<br>
+	<a href="/jspFiles/AddCst.jsp">Add New Customer</a>
+	<br>
+	<br>
+	<a href="/product/all">View All Product</a>
+	<br>
+	<br>
+	<a href="/product/insert">Add New Products</a>
 </body>
 </html>

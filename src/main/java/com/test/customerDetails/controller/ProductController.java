@@ -10,33 +10,33 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.test.customerDetails.model.ProductMetaModel;
 import com.test.customerDetails.reportsitory.ProductRepo;
 
-@RestController
-@RequestMapping(value = "product")
+@Controller
+@RequestMapping(value = "/product")
 public class ProductController {
 
 	@Autowired
 	ProductRepo productRepo;
 
 	@GetMapping(value = "/all")
-	public Object allProdcuts() {
+	public ModelAndView allProdcuts() {
 		try {
-			return productRepo.findAll();
+			return new ModelAndView("ProductView").addObject("list", productRepo.findAll());
 		} catch (Exception e) {
-			e.printStackTrace();
+			return new ModelAndView("Error");
 		}
-		return "Failed to fetch";
 	}
 
 	@GetMapping(value = "/insert")
-	public Object insertProdcuts() {
+	public ModelAndView insertProdcuts() {
 		try {
 			RestTemplate restTemplate = new RestTemplate();
 			HttpHeaders headers = new HttpHeaders();
@@ -48,7 +48,7 @@ public class ProductController {
 					HttpMethod.GET, entity, JSONObject.class);
 			List<LinkedHashMap<String, Object>> list = (List<LinkedHashMap<String, Object>>) responseEntity.getBody()
 					.get("products");
-			for (int i = 0; i < 6; i++) {
+			for (int i = 0; i <= 20; i++) {
 				ProductMetaModel metaModel = new ProductMetaModel();
 				metaModel.setId(Long.valueOf(list.get(i).get("id").toString()));
 				metaModel.setTitle(list.get(i).get("title").toString());
@@ -58,11 +58,10 @@ public class ProductController {
 				productRepo.save(metaModel);
 			}
 
-			return "Inserted";
+			return new ModelAndView("ProductAdd").addObject("list", productRepo.findAll());
 		} catch (Exception e) {
-			e.printStackTrace();
+			return new ModelAndView("Error");
 		}
-		return "Failed to fetch";
 	}
 
 }

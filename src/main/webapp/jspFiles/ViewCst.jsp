@@ -22,6 +22,8 @@
 			<th>ZipCode</th>
 			<th>State</th>
 			<th>Country</th>
+			<th>Edit</th>
+			<th>Delete</th>
 		</tr>
 		<core:forEach var="li" items="${list}">
 			<tr>
@@ -35,10 +37,18 @@
 				<td>${li.getZipCode()}</td>
 				<td>${li.getState()}</td>
 				<td>${li.getCountry()}</td>
+				<td><a href="/customers/get/${li.getToken()}">Edit</a></td>
+				<td><a href="/customers/delete?token=${li.getToken()}">Delete</a></td>
 			</tr>
+
 		</core:forEach>
 	</table>
 	<br>
-	<a href="/customers/add">Add new Customer</a>
+	<br>
+	<a href="/jspFiles/AddCst.jsp">Add New Customer</a>
+	<br>
+	<br>
+	<br>
+	<a href="/jspFiles/index.jsp"> <<< Back to Index </a>
 </body>
 </html>

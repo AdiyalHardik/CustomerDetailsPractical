@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Practical | Product</title>
 </head>
 <body>
-	<h2>Customer Added successfully.</h2>
-	<%@ include file="viewCst.jsp"%>
+	<h2>Products added successfully.....</h2>
+
+	<jsp:include page="/jspFiles/index.jsp" />
 </body>
 </html>
