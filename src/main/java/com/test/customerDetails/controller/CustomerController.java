@@ -1,26 +1,30 @@
 package com.test.customerDetails.controller;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.test.customerDetails.model.CustomerDetailsMetaModel;
 import com.test.customerDetails.reportsitory.CustomersRepo;
 
-@RestController
+@Controller
 @RequestMapping(value = "/customers")
-public class customerController {
+public class CustomerController {
 
 	@Autowired
 	CustomersRepo customerRepo;
 
-	@PostMapping(value = "/insert")
-	public Object insertCustomer(@RequestBody CustomerDetailsMetaModel metaModel) {
+	@RequestMapping(method = RequestMethod.GET, value = "/add")
+	public ModelAndView insertCustomer(@ModelAttribute(name = "metaModel") CustomerDetailsMetaModel metaModel) {
 		try {
 			CustomerDetailsMetaModel model = new CustomerDetailsMetaModel();
 			model.setName(metaModel.getName());
@@ -35,11 +39,10 @@ public class customerController {
 			model.setCountry(metaModel.getCountry());
 			model.setToken(UUID.randomUUID().toString());
 			customerRepo.save(model);
-			return "inserted";
+			return new ModelAndView("CstAdded");
 		} catch (Exception e) {
-			e.printStackTrace();
+			return new ModelAndView("Error");
 		}
-		return "Not inserted";
 	}
 
 	@PostMapping(value = "/update")
@@ -66,13 +69,15 @@ public class customerController {
 	}
 
 	@GetMapping(value = "/all")
-	public Object allCustomer() {
+	public ModelAndView allCustomer() {
 		try {
-			return customerRepo.findAll();
+			List<CustomerDetailsMetaModel> customerDetailsMetaModels = customerRepo.findAll();
+			return new ModelAndView("viewCst").addObject("list", customerDetailsMetaModels);
+//			return customerRepo.findAll();
 		} catch (Exception e) {
 			e.printStackTrace();
+			return new ModelAndView("Error");
 		}
-		return "Not fetched";
 	}
 
 	@GetMapping(value = "/get")
@@ -96,4 +101,12 @@ public class customerController {
 		return "Not deleted";
 	}
 
+}
+
+@Controller
+class idnexClass {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String indexMethod() {
+		return "index";
+	}
 }

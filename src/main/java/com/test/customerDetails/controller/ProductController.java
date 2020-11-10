@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.test.customerDetails.dto.ProductDTO;
 import com.test.customerDetails.model.ProductMetaModel;
 import com.test.customerDetails.reportsitory.ProductRepo;
 
