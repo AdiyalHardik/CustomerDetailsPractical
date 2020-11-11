@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.test.customerDetails.model.ProductMetaModel;
 import com.test.customerDetails.reportsitory.ProductRepo;
 
@@ -48,20 +52,14 @@ public class ProductController {
 					HttpMethod.GET, entity, JSONObject.class);
 			List<LinkedHashMap<String, Object>> list = (List<LinkedHashMap<String, Object>>) responseEntity.getBody()
 					.get("products");
-			List<ProductMetaModel> models = productRepo.findAll();
-			int size = models.size() + 5;
-			for (int i = 0; i < size; i++) {
-				if (size != 5) {
-					if (productRepo.findById(Long.valueOf(list.get(i).get("id").toString())) != null) {
-						continue;
-					}
-				}
-				ProductMetaModel metaModel = new ProductMetaModel();
-				metaModel.setId(Long.valueOf(list.get(i).get("id").toString()));
-				metaModel.setTitle(list.get(i).get("title").toString());
-				metaModel.setVendor(list.get(i).get("vendor").toString());
-				metaModel.setProduct_type((list.get(i).get("product_type")).toString());
-				metaModel.setPublished_scope((list.get(i).get("published_scope")).toString());
+			for (int i = 0; i < list.size(); i++) {
+				Gson gson = new Gson();
+				JsonParser jsonParser = new JsonParser();
+				String data = gson.toJson(list.get(i), JSONObject.class);
+				JsonElement element = jsonParser.parseString(data);
+				ProductDTO dto = gson.fromJson(element, ProductDTO.class);
+				JsonArray objects = (JsonArray) element.getAsJsonObject().get("variants");
+				ProductMetaModel metaModel = dto._toConvert(dto, objects.get(0).getAsJsonObject());
 				productRepo.save(metaModel);
 			}
 

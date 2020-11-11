@@ -11,25 +11,32 @@
 	<h1>All Products</h1>
 	<table border="1" width=95%>
 		<tr>
-			<th>Id</th>
-			<th>Title</th>
-			<th>Vendor</th>
+			<th>Product Id</th>
+			<th>Product Title</th>
+			<th>Product Vendor</th>
 			<th>Product Type</th>
 			<th>Published Scope</th>
+			<th>Variant Id</th>
+			<th>Variant Title</th>
+			<th>Variant Price</th>
+			<th>Variant Wieght</th>
+
 		</tr>
 		<core:forEach var="li" items="${list}">
 			<tr>
-				<td>${li.getId()}</td>
+				<td>${li.getpId()}</td>
 				<td>${li.getTitle()}</td>
 				<td>${li.getVendor()}</td>
 				<td>${li.getProduct_type()}</td>
 				<td>${li.getPublished_scope()}</td>
+				<td>${li.getVariantId()}</td>
+				<td>${li.getVariantTitle()}</td>
+				<td>${li.getVariantPrice()}</td>
+				<td>${li.getVariantWeight()}</td>
+
 			</tr>
 		</core:forEach>
 	</table>
-	<br>
-	<br>
-	<a href="/product/insert">Add New Products</a>
 	<br>
 	<br>
 	<br>

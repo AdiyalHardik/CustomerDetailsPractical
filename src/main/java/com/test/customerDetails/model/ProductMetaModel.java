@@ -15,8 +15,9 @@ public class ProductMetaModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int srNo;
 
-	Long id;
-	String title, vendor, product_type, published_scope;
+	Long pId, variantId;
+	Float variantWeight, variantPrice;
+	String title, vendor, product_type, published_scope, variantTitle;
 
 	public int getSrNo() {
 		return srNo;
@@ -26,12 +27,12 @@ public class ProductMetaModel {
 		this.srNo = srNo;
 	}
 
-	public Long getId() {
-		return id;
+	public Long getpId() {
+		return pId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setpId(Long pId) {
+		this.pId = pId;
 	}
 
 	public String getTitle() {
@@ -64,6 +65,38 @@ public class ProductMetaModel {
 
 	public void setPublished_scope(String published_scope) {
 		this.published_scope = published_scope;
+	}
+
+	public Long getVariantId() {
+		return variantId;
+	}
+
+	public void setVariantId(Long variantId) {
+		this.variantId = variantId;
+	}
+
+	public String getVariantTitle() {
+		return variantTitle;
+	}
+
+	public void setVariantTitle(String variantTitle) {
+		this.variantTitle = variantTitle;
+	}
+
+	public Float getVariantWeight() {
+		return variantWeight;
+	}
+
+	public void setVariantWeight(Float variantWeight) {
+		this.variantWeight = variantWeight;
+	}
+
+	public Float getVariantPrice() {
+		return variantPrice;
+	}
+
+	public void setVariantPrice(Float variantPrice) {
+		this.variantPrice = variantPrice;
 	}
 
 }

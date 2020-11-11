@@ -38,8 +38,9 @@
 			</tr>
 			<tr>
 				<td>Mobile Number:</td>
-				<td><form:input type="number" path="mobile"
-						placeholder="Enter Mobile Number" required="required" /></td>
+				<td><form:input type="tel" path="mobile"
+						placeholder="Enter 10 digit Number" required="required"
+						pattern="^\d{10}$" /></td>
 			</tr>
 			<tr>
 				<td>City:</td>
@@ -48,8 +49,8 @@
 			</tr>
 			<tr>
 				<td>ZipCode:</td>
-				<td><form:input type="number" path="zipCode"
-						placeholder="Enter ZipCode" required="required" /></td>
+				<td><form:input type="tel" path="zipCode" pattern="^\d{6}$"
+						placeholder="Enter 6 digit ZipCode" required="required" /></td>
 			</tr>
 			<tr>
 				<td>State:</td>

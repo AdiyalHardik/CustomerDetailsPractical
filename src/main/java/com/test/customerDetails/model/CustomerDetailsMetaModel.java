@@ -16,8 +16,8 @@ public class CustomerDetailsMetaModel {
 	int id;
 
 	String token, name, email, gender, add1, add2, state, city, country;
-	int mobile;
-	int zipCode;
+	long mobile;
+	long zipCode;
 
 	public int getId() {
 		return id;
@@ -91,19 +91,19 @@ public class CustomerDetailsMetaModel {
 		this.country = country;
 	}
 
-	public int getMobile() {
+	public long getMobile() {
 		return mobile;
 	}
 
-	public void setMobile(int mobile) {
+	public void setMobile(long mobile) {
 		this.mobile = mobile;
 	}
 
-	public int getZipCode() {
+	public long getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(int zipCode) {
+	public void setZipCode(long zipCode) {
 		this.zipCode = zipCode;
 	}
 

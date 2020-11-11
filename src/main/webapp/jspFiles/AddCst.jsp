@@ -5,6 +5,21 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Practical | User Add form</title>
+<script type="text/javascript">
+function phonenumber(inputtxt)
+{
+  var phoneno = /^\d{10}$/;
+  if((inputtxt.value.match(phoneno))
+        {
+      return true;
+        }
+      else
+        {
+        alert("message");
+        return false;
+        }
+}
+</script>
 </head>
 <body>
 	<form action="/customers/add" method="post" autocomplete="off"
@@ -23,7 +38,7 @@
 			<tr>
 				<td>Gender:</td>
 				<td><input type="radio" name="gender" value="male">Male<input
-					type="radio" name="sex" value="female">Female</td>
+					type="radio" name="gender" value="female">Female</td>
 			</tr>
 			<tr>
 				<td>Address 1:</td>
@@ -35,8 +50,9 @@
 			</tr>
 			<tr>
 				<td>Mobile Number:</td>
-				<td><input type="number" name="mobile"
-					placeholder="Enter Mobile Number" required="required"></td>
+				<td><input type="tel" name="mobile"
+					placeholder="Enter 10 digit Number" required="required"
+					pattern="^\d{10}$"></td>
 			</tr>
 			<tr>
 				<td>City:</td>
@@ -45,8 +61,8 @@
 			</tr>
 			<tr>
 				<td>ZipCode:</td>
-				<td><input type="number" name="zipCode"
-					placeholder="Enter ZipCode" required="required"></td>
+				<td><input type="tel" name="zipCode" pattern="^\d{6}$"
+					placeholder="Enter 6 digit ZipCode" required="required"></td>
 			</tr>
 			<tr>
 				<td>State:</td>
@@ -66,11 +82,14 @@
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" name="Add"
-					style="margin-left: 50%"></td>
+					style="margin-left: 50%" onclick="phonenumber()"></td>
 			</tr>
 		</table>
 	</form>
 
+	<br>
+	<br>
+	<h3></h3>
 	<br>
 	<br>
 	<br>
