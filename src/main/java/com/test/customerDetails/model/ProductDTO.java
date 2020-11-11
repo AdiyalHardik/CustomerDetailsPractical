@@ -1,7 +1,6 @@
-package com.test.customerDetails.controller;
+package com.test.customerDetails.model;
 
 import com.google.gson.JsonObject;
-import com.test.customerDetails.model.ProductMetaModel;
 
 public class ProductDTO {
 	Long id;

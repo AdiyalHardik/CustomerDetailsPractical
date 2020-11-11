@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.test.customerDetails.model.ProductDTO;
 import com.test.customerDetails.model.ProductMetaModel;
 import com.test.customerDetails.reportsitory.ProductRepo;
 
