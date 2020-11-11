@@ -48,7 +48,14 @@ public class ProductController {
 					HttpMethod.GET, entity, JSONObject.class);
 			List<LinkedHashMap<String, Object>> list = (List<LinkedHashMap<String, Object>>) responseEntity.getBody()
 					.get("products");
-			for (int i = 0; i <= 20; i++) {
+			List<ProductMetaModel> models = productRepo.findAll();
+			int size = models.size() + 5;
+			for (int i = 0; i < size; i++) {
+				if (size != 5) {
+					if (productRepo.findById(Long.valueOf(list.get(i).get("id").toString())) != null) {
+						continue;
+					}
+				}
 				ProductMetaModel metaModel = new ProductMetaModel();
 				metaModel.setId(Long.valueOf(list.get(i).get("id").toString()));
 				metaModel.setTitle(list.get(i).get("title").toString());

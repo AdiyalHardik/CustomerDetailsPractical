@@ -33,6 +33,6 @@
 	<br>
 	<br>
 	<br>
-	<a href="/jspFiles/index.jsp"> Back to Index </a>
+	<a href="/jspFiles/index.jsp"> <<< Back to Index </a>
 </body>
 </html>

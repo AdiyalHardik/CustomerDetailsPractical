@@ -74,6 +74,10 @@
 	<br>
 	<br>
 	<br>
-	<a href="/jspFiles/index.jsp"> Back to Index </a>
+	<a href="/customers/all"> << Back</a>
+	<br>
+	<br>
+	<br>
+	<a href="/jspFiles/index.jsp"><<< Back to Index </a>
 </body>
 </html>

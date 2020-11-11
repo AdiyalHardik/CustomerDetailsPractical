@@ -8,4 +8,6 @@ import com.test.customerDetails.model.ProductMetaModel;
 @Repository
 public interface ProductRepo extends JpaRepository<ProductMetaModel, Integer> {
 
+	ProductMetaModel findById(Long id);
+
 }
