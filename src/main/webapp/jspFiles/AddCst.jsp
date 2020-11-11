@@ -5,21 +5,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Practical | User Add form</title>
-<script type="text/javascript">
-function phonenumber(inputtxt)
-{
-  var phoneno = /^\d{10}$/;
-  if((inputtxt.value.match(phoneno))
-        {
-      return true;
-        }
-      else
-        {
-        alert("message");
-        return false;
-        }
-}
-</script>
 </head>
 <body>
 	<form action="/customers/add" method="post" autocomplete="off"
